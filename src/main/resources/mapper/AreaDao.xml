@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruolan.springtest.dao.AreaDao">
+    <select id="queryArea" resultType="com.ruolan.springtest.entity.Area">
+        SELECT
+        area_id,
+        area_name,
+        area_desc,
+        priority,
+        create_time,
+        last_edit_time
+        FROM
+        tb_area
+        ORDER BY
+        priority DESC
+    </select>
+    <insert id="insertArea" useGeneratedKeys="true" keyProperty="areaId"
+            keyColumn="area_id">
+        INSERT INTO
+        tb_area(area_name,area_desc,priority,
+        create_time,last_edit_time)
+        VALUES
+        (#{areaName},#{areaDesc},#{priority},
+        #{createTime},#{lastEditTime})
+    </insert>
+    <update id="updateArea" parameterType="com.ruolan.springtest.entity.Area">
+        update tb_area
+        <set>
+            <if test="areaName != null">area_name=#{areaName},</if>
+            <if test="areaDesc != null">area_desc=#{areaDesc},</if>
+            <if test="priority != null">priority=#{priority},</if>
+            <if test="lastEditTime != null">last_edit_time=#{lastEditTime}</if>
+        </set>
+        where area_id=#{areaId}
+    </update>
+    <delete id="deleteArea">
+        DELETE FROM
+        tb_area
+        WHERE
+        area_id =
+        #{areaId}
+    </delete>
+    <delete id="batchDeleteArea" parameterType="long">
+        DELETE FROM
+        tb_area
+        WHERE area_id IN
+        <foreach collection="list" item="areaId" open="(" separator=","
+                 close=")">
+            #{areaId}
+        </foreach>
+    </delete>
+
+</mapper>
