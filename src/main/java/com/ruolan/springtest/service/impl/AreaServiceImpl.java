@@ -22,6 +22,7 @@ public class AreaServiceImpl implements AreaService {
 
     @Autowired
     private JedisUtil.Strings jedisStrings;
+
     @Autowired
     private JedisUtil.Keys jedisKeys;
 
@@ -35,11 +36,14 @@ public class AreaServiceImpl implements AreaService {
         String key = AREALISTKEY;
         List<Area> areaList = null;
         ObjectMapper mapper = new ObjectMapper();
+        //判断是否有缓存
         if (!jedisKeys.exists(key)) {
+            //没哟缓存  则查询数据库
             areaList = areaDao.queryArea();
             String jsonString = mapper.writeValueAsString(areaList);
             jedisStrings.set(key, jsonString);
         } else {
+            //有缓存  这个时候从缓存中通过key获取到缓存的数据  然后转换为我们需要的数据
             String jsonString = jedisStrings.get(key);
             JavaType javaType = mapper.getTypeFactory()
                     .constructParametricType(ArrayList.class, Area.class);

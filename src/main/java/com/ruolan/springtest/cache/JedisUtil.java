@@ -138,9 +138,7 @@ public class JedisUtil {
 		/**
 		 * 设置key的过期时间，以秒为单位
 		 * 
-		 * @param String
-		 *            key
-		 * @param 时间
+		 * @param seconds
 		 *            ,已秒为单位
 		 * @return 影响的记录数
 		 * */
@@ -154,9 +152,9 @@ public class JedisUtil {
 		/**
 		 * 设置key的过期时间,它是距历元（即格林威治标准时间 1970 年 1 月 1 日的 00:00:00，格里高利历）的偏移量。
 		 * 
-		 * @param String
+		 * @param key
 		 *            key
-		 * @param 时间
+		 * @param timestamp
 		 *            ,已秒为单位
 		 * @return 影响的记录数
 		 * */
@@ -170,7 +168,7 @@ public class JedisUtil {
 		/**
 		 * 查询key的过期时间
 		 * 
-		 * @param String
+		 * @param key
 		 *            key
 		 * @return 以秒为单位的时间表示
 		 * */
@@ -198,7 +196,7 @@ public class JedisUtil {
 		/**
 		 * 删除keys对应的记录,可以是多个key
 		 * 
-		 * @param String
+		 * @param keys
 		 *            ... keys
 		 * @return 删除的记录数
 		 * */
@@ -212,7 +210,7 @@ public class JedisUtil {
 		/**
 		 * 删除keys对应的记录,可以是多个key
 		 * 
-		 * @param String
+		 * @param keys
 		 *            ... keys
 		 * @return 删除的记录数
 		 * */
@@ -226,7 +224,7 @@ public class JedisUtil {
 		/**
 		 * 判断key是否存在
 		 * 
-		 * @param String
+		 * @param key
 		 *            key
 		 * @return boolean
 		 * */
@@ -241,7 +239,7 @@ public class JedisUtil {
 		/**
 		 * 对List,Set,SortSet进行排序,如果集合数据较大应避免使用这个方法
 		 * 
-		 * @param String
+		 * @param key
 		 *            key
 		 * @return List<String> 集合的全部记录
 		 * **/
@@ -256,9 +254,9 @@ public class JedisUtil {
 		/**
 		 * 对List,Set,SortSet进行排序或limit
 		 * 
-		 * @param String
+		 * @param key
 		 *            key
-		 * @param SortingParams
+		 * @param parame
 		 *            parame 定义排序类型或limit的起止位置.
 		 * @return List<String> 全部或部分记录
 		 * **/
@@ -273,7 +271,7 @@ public class JedisUtil {
 		/**
 		 * 返回指定key存储的类型
 		 * 
-		 * @param String
+		 * @param key
 		 *            key
 		 * @return String string|list|set|zset|hash
 		 * **/
@@ -288,7 +286,7 @@ public class JedisUtil {
 		/**
 		 * 查找所有匹配给定的模式的键
 		 * 
-		 * @param String
+		 * @param pattern
 		 *            key的表达式,*表示多个，？表示一个
 		 * */
 		public Set<String> keys(String pattern) {
@@ -305,9 +303,9 @@ public class JedisUtil {
 		/**
 		 * 向Set添加一条记录，如果member已存在返回0,否则返回1
 		 * 
-		 * @param String
+		 * @param key
 		 *            key
-		 * @param String
+		 * @param member
 		 *            member
 		 * @return 操作码,0或1
 		 * */
