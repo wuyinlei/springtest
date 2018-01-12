@@ -18,6 +18,9 @@ public class AreaServiceTest {
     @Autowired
     private AreaService areaService;
 
+    // Redis的安装和配置      启动之后再来运行这个是可以的  也就是走缓存了
+    //    https://www.jianshu.com/p/6b5eca8d908b
+
     @Test
     public void testGetAreaList() throws IOException {
         List<Area> areaList = areaService.getAreaList();

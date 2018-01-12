@@ -2,7 +2,7 @@
 <configuration debug="false">
 	<appender name="INFO-FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${catalina.base}/webapps/myo2o/logs/info/info.log</file>
+		<file>${catalina.base}/webapps/springtest/logs/info/info.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<fileNamePattern>${catalina.base}/webapps/springtest/logs/info/info.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy
@@ -20,7 +20,7 @@
 	<appender name="ACCESS-FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>
-			${catalina.base}/webapps/myo2o/logs/access/access.log</file>
+			${catalina.base}/webapps/springtest/logs/access/access.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<FileNamePattern>${catalina.base}/webapps/springtest/logs/access/access.%d{yyyy-MM-dd}.%i.log.zip</FileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy
